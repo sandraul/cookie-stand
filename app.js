@@ -12,23 +12,33 @@ var pioneer = {
   minCust:17,
   maxCust:88,
   avgSale:5.2,
-  storeHours: ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"],
+  storeHours: ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm",],
   storeCookies: [],
   totalCookiesSold: 0,
+
 //Generate a random number of customers per hour using math.random
   randomCustomersHour: function() {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
 },
+
 //Calculate number of cookies sold per hour using avgSale and randomCustomersHour
+//   hourlySales: function() {
+//     for (var i = 0; i < this.storeHours.length; i++) {
+//       var cookiesSoldHour = Math.floor(this.avgSale * this.randomCustomersHour());
+//       this.totalCookiesSold.push(cookiesSoldHour);
+//     }
+// },
+
   hourlySales: function() {
     return (this.randomCustomersHour() * this.avgSale);
 },
   cookiesSoldHour: function() {
-    for (var i = 0; i < this.hoursStore.length; i++) {
+    for (var i = 0; i < this.storeHours.length; i++) {
       this.storeCookies.push(this.hourlySales());
     }
   },
 
+//Show results as an unordered list in the browser
   displayCookies: function() {
     var display = document.getElementById("display-pioneer");
     display.innerHTML = "<h3>" + this.name + "</h3>"
@@ -36,9 +46,9 @@ var pioneer = {
     for (var i = 0; i < this.storeHours.length; i++) {
       display.innerHTML += "<li>" + this.storeHours[i] + ": " + this.storeCookies[i] + "</li>"
     }
-    display.innerHTML += "<ul>"
+    display.innerHTML += "</ul>"
   },
-  
+
   totalCookiesSold: function () {
     var Total = 0;
     for (var i = 0; i < this.storeCookies.length; i++) {
@@ -79,11 +89,6 @@ var pearl = {
 }
 
 
-// function getBranchInfo(branchObject) {
-//   var rowData = "<tr><td>" + branchObject.mincust + "</td>";
-//   rowData += "<td>" + branchObject.maxcust + "</td>";
-//   rowData += "<td>" + branchObject.avgsale + "</td></tr>";
-//   return rowData;
-// }
 
-pioneer.displayCookies();
+
+this.pioneer.displayCookies();
