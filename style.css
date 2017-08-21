@@ -1,21 +1,61 @@
 body {
   background-color: #fcebeb;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, Times, sans-serif;
+}
 
+header {
+  background-color:
+  text-align: center;
+  font-family: Helvetica, Arial, Times, sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  /*background-image: url(pictures/salmon.png);
+  width: 800px;
+  height: auto;*/
+}
+
+nav {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+}
+
+section {
+  vertical-align: right;
+  width: 70%;
+}
+
+section div {
+  list-style: none;
+}
+
+nav div {
+  list-style: none;
+  margin-top: 15px;
+  padding: 20px;
+}
+
+nav li:hover {
+  background-color: #e87572;
 }
 
 h1 {
-  text-align: center;
   font: 24pt;
-  color: #441110;
+  color: #2d1010;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
+
+/*#salmon-color table td {
+    color: white;
+    background-color: #2d1010;
+    width: 33%;
+}*/
+
 div {
   padding: 3px;
   font: 18pt;
-  color: #5b1716;
   letter-spacing: 0.1em;
   text-transform: lowercase;
 }
