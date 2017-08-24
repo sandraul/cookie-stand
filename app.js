@@ -31,14 +31,14 @@ var airport = new Branch("Portland Airport", 6, 24, 1.2);
 var washington = new Branch("Washington Square", 11, 38, 1.9);
 var sellwood = new Branch("Sellwood", 20, 48, 3.3);
 var pearl = new Branch("Pearl District", 3, 24, 2.6);
-var Branches = [];
+var Branches = [pioneer, airport];
 
 
 function getTableRowInfo() {
 var buildTableBody = document.getElementById("table-branches");
 var row = document.createElement("tr");
 var openHours = document.createElement("th");
-openHours.innerText = "branch";
+openHours.innerText = this.Branch.storeHours;
 row.appendChild(openHours);
 buildTableBody.appendChild(row);
 
@@ -46,19 +46,13 @@ buildTableBody.appendChild(row);
     var tr = document.createElement("tr");
     buildTableBody.appendChild(tr);
     var td = document.createElement("td");
-    buildTableBody.appendChild(td);
+    td.innerText = Branches[index].name;
+    tr.appendChild(td);
   };
+  for (var times = 0; times < Branches[index].storeHours.length; times++) {
+    var hours = document.createElement();
 
-  getTableRowInfo();
+  };
+};
 
-// buildCookiesTable();
-// pioneer.cookiesSoldHour();
-// pioneer.displayCookies();
-// airport.cookiesSoldHour();
-// airport.displayCookies();
-// washington.cookiesSoldHour();
-// washington.displayCookies();
-// sellwood.cookiesSoldHour();
-// sellwood.displayCookies();
-// pearl.cookiesSoldHour();
-// pearl.displayCookies();
+getTableRowInfo();
