@@ -1,17 +1,31 @@
 body {
   background-color: #fcebeb;
   font-family: Helvetica, Arial, Times, sans-serif;
+  background-color: #40b3b5;
 }
 
 header {
-  background-color:
+  display: inline-block;
   text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+header #logo {
+    float: center;
+    display: block;
+    margin: 0 auto;
+    width: 787px;
+    height: 246px;
+    background-image: center;
+    opacity: 0.85;
+}
+
+header #title {
   font-family: Helvetica, Arial, Times, sans-serif;
   font-weight: bold;
-  font-size: 24px;
-  /*background-image: url(pictures/salmon.png);
-  width: 800px;
-  height: auto;*/
+  font-size: 40px;
+  color: #b54846;
 }
 
 nav {
@@ -21,12 +35,18 @@ nav {
 }
 
 section {
-  vertical-align: right;
-  width: 70%;
+  width: 100%;
 }
 
 section div {
   list-style: none;
+  padding-left: 30px;
+}
+
+.palette-color {
+  float: left;
+  width: 100%;
+  clear: both;
 }
 
 nav div {
@@ -35,27 +55,18 @@ nav div {
   padding: 20px;
 }
 
-nav li:hover {
-  background-color: #e87572;
-}
-
-h1 {
+h1, h2, h3 {
   font: 24pt;
   color: #2d1010;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: #b54846;
+
 }
-
-
-/*#salmon-color table td {
-    color: white;
-    background-color: #2d1010;
-    width: 33%;
-}*/
 
 div {
   padding: 3px;
-  font: 18pt;
   letter-spacing: 0.1em;
   text-transform: lowercase;
+  color: #b54846;
 }
