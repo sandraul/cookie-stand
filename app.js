@@ -31,28 +31,51 @@ var airport = new Branch("Portland Airport", 6, 24, 1.2);
 var washington = new Branch("Washington Square", 11, 38, 1.9);
 var sellwood = new Branch("Sellwood", 20, 48, 3.3);
 var pearl = new Branch("Pearl District", 3, 24, 2.6);
-var Branches = [pioneer, airport];
+var Branches = [];
+
 
 
 function getTableRowInfo() {
-var buildTableBody = document.getElementById("table-branches");
-var row = document.createElement("tr");
-var openHours = document.createElement("th");
-openHours.innerText = this.Branch.storeHours;
-row.appendChild(openHours);
-buildTableBody.appendChild(row);
+  var buildTableBody = document.getElementById("table-branches");
+  var row = document.createElement("tr");
+  var openHours = document.createElement("th");
+    openHours.innerText = "Store Locations";
+    row.appendChild(openHours);
+    buildTableBody.appendChild(row);
+    totalCookiesSold = 0;
 
-  for (var index = 0; index < Branches.length; index++) {
+  for (lugar = 0; lugar < Branches.length; lugar++) {
     var tr = document.createElement("tr");
-    buildTableBody.appendChild(tr);
-    var td = document.createElement("td");
-    td.innerText = Branches[index].name;
-    tr.appendChild(td);
-  };
-  for (var times = 0; times < Branches[index].storeHours.length; times++) {
-    var hours = document.createElement();
+    var td = document.createElement("th");
+    td.innerText = Branches[lugar].name;
+    tr.appendChild(td)
 
-  };
-};
+  for (times = 0; times < storeHours.length; times++) {
+    if(lugar == 0) {
+    hours = document.createElement("th");
+    hours.innerText = storeHours[times];
+    row.appendChild(hours);
+  }
+  var cookieData = document.createElement("td");
+  cookieData.innerText = Branches[lugar].cookiesSoldHour();
+  tr.appendChild(cookieData);
+  buildTableBody.appendChild(tr);
+
+  Branches[lugar].totalCookiesSold += cookieData;
+  console.log(totalCookiesSold)
+}
+
+  if (lugar == 0){
+    var grandTotalColumn = document.createElement("th");
+    grandTotalColumn.innerText = "Total";
+    row.appendChild(grandTotalColumn);
+  }
+
+  var grandTotalData = document.createElement("td");
+  grandTotalData.innerText = Branches[lugar].totalCookiesSold;
+  tr.appendChild(grandTotalData);
+  buildTableBody.appendChild(tr);
+  }
+}
 
 getTableRowInfo();
