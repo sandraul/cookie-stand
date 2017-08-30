@@ -1,3 +1,4 @@
+//Building the Constructor Function
 var Branch = function(name, minCust, maxCust, avgSale) {
   this.name = name;
   this.minCust = minCust;
@@ -6,76 +7,55 @@ var Branch = function(name, minCust, maxCust, avgSale) {
   this.storeHours = ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm",];
   this.storeCookies = [];
   this.totalCookiesSold = 0;
+
+//Obtaining a random number of customer per hour
   this.randomCustomersHour = function() {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
   };
   this.hourlySales = function() {
-    return Math.floor(this.randomCustomersHour() * this.avgSale);
+    var cookiesSold =  Math.floor(this.randomCustomersHour() * this.avgSale);
+    this.storeCookies.push(cookiesSold);
+    this.totalCookiesSold += cookiesSold;
   };
-  this.cookiesSoldHour = function() {
-    for (var index = 0; index < this.storeHours.length; index++){
-    this.storeCookies.push(this.randomCustomersHour());
+}
+
+
+var branches = [];
+branches.push(new Branch("Pioneer Square", 17, 88, 5.2));
+branches.push(new Branch("Portland Airport", 6, 24, 1.2));
+branches.push(new Branch("Washington Square", 11, 38, 1.9));
+branches.push(new Branch("Sellwood", 20, 48, 3.3));
+branches.push(new Branch("Pearl District", 3, 24, 2.6));
+
+function createTable() {
+  var buildTableBody = document.getElementById("table-branches");
+  var branchesRow = document.createElement("tr");
+  var hoursRow = document.createElement("th");
+  hoursRow.innerText = "Store Locations";
+  buildTableBody.appendChild(branchesRow);
+  branchesRow.appendChild(hoursRow);
+  totalCookiesSold = 0;
+
+  for (index = 0; index < branches.length; index++) {
+    var columnOne = document.createElement("tr");
+    buildTableBody.appendChild(columnOne);
+    var storeNames = document.createElement("td");
+    storeNames.innerText = branches[index].name;
+    columnOne.appendChild(storeNames);
+
+    for (hoursIndex = 0; hoursIndex < branches[index].storeHours.length + 1; hoursIndex++) {
+      branches[index].hourlySales();
+      buildTableBody.appendChild(columnOne);
+      var cookiesData = document.createElement("td");
+      cookiesData.innerText = branches[index].storeCookies[hoursIndex];
+      columnOne.appendChild(cookiesData);
     }
-  };
-  this.totalCookiesSold = function() {
-    var Total = 0;
-    for (var index = 0; index < this.storeCookies.length; index++) {
-      Total += this.storeCookies[index];
-    }
-      return Total;
-  };
+
+    var totals = document.createElement("td")
+    cookiesData.innerText = branches[index].totalCookiesSold
+    columnOne.appendChild(cookiesData);
+  }
 };
 
-var pioneer = new Branch("Pioneer Square", 17, 88, 5.2);
-var airport = new Branch("Portland Airport", 6, 24, 1.2);
-var washington = new Branch("Washington Square", 11, 38, 1.9);
-var sellwood = new Branch("Sellwood", 20, 48, 3.3);
-var pearl = new Branch("Pearl District", 3, 24, 2.6);
-var Branches = [];
 
-
-
-function getTableRowInfo() {
-  var buildTableBody = document.getElementById("table-branches");
-  var row = document.createElement("tr");
-  var openHours = document.createElement("th");
-    openHours.innerText = "Store Locations";
-    row.appendChild(openHours);
-    buildTableBody.appendChild(row);
-    totalCookiesSold = 0;
-
-  for (lugar = 0; lugar < Branches.length; lugar++) {
-    var tr = document.createElement("tr");
-    var td = document.createElement("th");
-    td.innerText = Branches[lugar].name;
-    tr.appendChild(td)
-
-  for (times = 0; times < storeHours.length; times++) {
-    if(lugar == 0) {
-    hours = document.createElement("th");
-    hours.innerText = storeHours[times];
-    row.appendChild(hours);
-  }
-  var cookieData = document.createElement("td");
-  cookieData.innerText = Branches[lugar].cookiesSoldHour();
-  tr.appendChild(cookieData);
-  buildTableBody.appendChild(tr);
-
-  Branches[lugar].totalCookiesSold += cookieData;
-  console.log(totalCookiesSold)
-}
-
-  if (lugar == 0){
-    var grandTotalColumn = document.createElement("th");
-    grandTotalColumn.innerText = "Total";
-    row.appendChild(grandTotalColumn);
-  }
-
-  var grandTotalData = document.createElement("td");
-  grandTotalData.innerText = Branches[lugar].totalCookiesSold;
-  tr.appendChild(grandTotalData);
-  buildTableBody.appendChild(tr);
-  }
-}
-
-getTableRowInfo();
+createTable();
